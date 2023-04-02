@@ -1,21 +1,25 @@
+import abc
+
+
 class DatasetBase:
+    __metaclass__ = abc.ABCMeta
 
     # Entries
     entry_list = []
 
+    @abc.abstractmethod
     def get_readable_name(self):
-        # TODO: Overload and add implementation
-        pass
+        """returns a human-readable name of the dataset-type"""
+        return
 
+    @abc.abstractmethod
     def import_dataset(self, path=None):
-        # TODO: Overload and add implementation
-        pass
+        return
 
+    @abc.abstractmethod
     def export_dataset(self, path=None):
-        # TODO: Overload and add implementation
-        pass
+        return
 
+    @abc.abstractmethod
     def print_type_help(self):
-        # TODO: Overload and add implementation
-        pass
-
+        """Prints out some information about the type"""

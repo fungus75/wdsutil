@@ -3,8 +3,11 @@ import sys
 
 from DatasetBase import DatasetBase
 
+
 class DatasetLJSpeech(DatasetBase):
 
+    def export_dataset(self, path=None):
+        pass
 
     def get_readable_name(self):
         return 'ljspeech'
@@ -18,5 +21,3 @@ class DatasetLJSpeech(DatasetBase):
     def import_dataset(self, path=None):
         if path is None or not os.path.exists(path):
             sys.exit("Error: You must provide a valid path for dataset.")
-
-
