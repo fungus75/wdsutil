@@ -2,7 +2,6 @@ import os.path
 import sys
 
 from DatasetBase import DatasetBase
-from DsContent import DsContent
 
 
 class DatasetLJSpeech(DatasetBase):
@@ -14,7 +13,7 @@ class DatasetLJSpeech(DatasetBase):
         return 'ljspeech'
 
     def print_type_help(self):
-        print("Type:", self.get_readable_name)
+        print("Type:", self.get_readable_name())
         print(" Datatype in LJSpeech-Format")
         print(" See https://keithito.com/LJ-Speech-Dataset/ for a description of the type")
         print(" You must provide the full path to the metadata-file as additional file parameter (-if or -of)")
@@ -31,4 +30,6 @@ class DatasetLJSpeech(DatasetBase):
                                    basisPathWaveFile=basisPathWaveFile,
                                    text=parts[1],
                                    lowerText=parts[2])
+
+        return self._getContent()
 

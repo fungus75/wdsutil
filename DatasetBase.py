@@ -55,3 +55,5 @@ class DatasetBase:
 
         self.content.add_item(item)
 
+    def _getContent(self):
+        return self.content

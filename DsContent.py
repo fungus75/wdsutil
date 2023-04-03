@@ -81,3 +81,12 @@ class DsContent:
             return
         raise Exception("Item is not complete")
 
+    def size(self):
+        return len(self.content)
+
+    def get(self, idx):
+        if (idx<0):
+            return None
+        if (idx>=self.size()):
+            return None
+        return self.content[idx]
