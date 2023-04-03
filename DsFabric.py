@@ -3,6 +3,10 @@ import sys
 
 class DsFabric:
     datatype_dict = {}
+    mainConfig = None
+
+    def __init__(self, mainConfig):
+        self.mainConfig=mainConfig
 
     def register_datatype(self, datatype=None):
         if datatype is not None:
