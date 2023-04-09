@@ -5,7 +5,12 @@ from DsFabric import DsFabric
 from DatasetLJSpeech import DatasetLJSpeech
 from IfoFabric import IfoFabric
 from InfoAllSampleratesEqual import InfoAllSampleratesEqual
+from InfoAvgCharPerSec import InfoAvgCharPerSec
+from InfoCount import InfoCount
+from InfoMaxCharPerSec import InfoMaxCharPerSec
+from InfoMinCharPerSec import InfoMinCharPerSec
 from InfoSamplerate import InfoSamplerate
+from InfoTotalSec import InfoTotalSec
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
@@ -22,6 +27,11 @@ if __name__ == '__main__':
     info_fab = IfoFabric(mainConfig)
     info_fab.register_info(InfoSamplerate(mainConfig))
     info_fab.register_info(InfoAllSampleratesEqual(mainConfig))
+    info_fab.register_info(InfoMinCharPerSec(mainConfig))
+    info_fab.register_info(InfoMaxCharPerSec(mainConfig))
+    info_fab.register_info(InfoAvgCharPerSec(mainConfig))
+    info_fab.register_info(InfoCount(mainConfig))
+    info_fab.register_info(InfoTotalSec(mainConfig))
     content = None
 
     parser = argparse.ArgumentParser(description='Wave DataSet Util')
