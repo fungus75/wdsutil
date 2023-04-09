@@ -57,3 +57,6 @@ class DatasetBase:
 
     def _getContent(self):
         return self.content
+
+    def setContent(self, content):
+        self.content = content
