@@ -13,6 +13,7 @@ from InfoCount import InfoCount
 from InfoMaxCharPerSec import InfoMaxCharPerSec
 from InfoMinCharPerSec import InfoMinCharPerSec
 from InfoSamplerate import InfoSamplerate
+from InfoStats import InfoStats
 from InfoTotalSec import InfoTotalSec
 
 # Press the green button in the gutter to run the script.
@@ -38,6 +39,7 @@ if __name__ == '__main__':
     info_fab.register_info(InfoCharPerSec25Percent(mainConfig))
     info_fab.register_info(InfoCharPerSec50Percent(mainConfig))
     info_fab.register_info(InfoCharPerSec75Percent(mainConfig))
+    info_fab.register_info(InfoStats(mainConfig))
     content = None
 
     parser = argparse.ArgumentParser(description='Wave DataSet Util')
