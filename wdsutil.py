@@ -6,6 +6,9 @@ from DatasetLJSpeech import DatasetLJSpeech
 from IfoFabric import IfoFabric
 from InfoAllSampleratesEqual import InfoAllSampleratesEqual
 from InfoAvgCharPerSec import InfoAvgCharPerSec
+from InfoCharPerSec25Percent import InfoCharPerSec25Percent
+from InfoCharPerSec50Percent import InfoCharPerSec50Percent
+from InfoCharPerSec75Percent import InfoCharPerSec75Percent
 from InfoCount import InfoCount
 from InfoMaxCharPerSec import InfoMaxCharPerSec
 from InfoMinCharPerSec import InfoMinCharPerSec
@@ -32,6 +35,9 @@ if __name__ == '__main__':
     info_fab.register_info(InfoAvgCharPerSec(mainConfig))
     info_fab.register_info(InfoCount(mainConfig))
     info_fab.register_info(InfoTotalSec(mainConfig))
+    info_fab.register_info(InfoCharPerSec25Percent(mainConfig))
+    info_fab.register_info(InfoCharPerSec50Percent(mainConfig))
+    info_fab.register_info(InfoCharPerSec75Percent(mainConfig))
     content = None
 
     parser = argparse.ArgumentParser(description='Wave DataSet Util')
@@ -66,7 +72,7 @@ if __name__ == '__main__':
     # import
     if args.input_type:
         content_type = ds_fab.get(args.input_type)
-        content = content_type.import_dataset(path = args.input_file)
+        content = content_type.import_dataset(path=args.input_file)
 
     # info-processing
     if args.info:
