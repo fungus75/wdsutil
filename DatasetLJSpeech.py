@@ -10,12 +10,15 @@ class DatasetLJSpeech(DatasetBase):
     def export_dataset(self, path=None):
         if path is None:
             sys.exit("Error: You must provide a valid path for exporting dataset.")
+
+        basisPathWaveFile = self._eval_wave_path(path)
         if os.path.exists(path) and self.mainConfig['overwrite']:
             os.remove(path)
+            if os.path.exists(basisPathWaveFile):
+                shutil.rmtree(basisPathWaveFile)
         if os.path.exists(path):
             sys.exit("Error: Export path exist, please provide an non-existing path!")
 
-        basisPathWaveFile = self._eval_wave_path(path)
         if not os.path.exists(basisPathWaveFile):
             os.makedirs(basisPathWaveFile)
 

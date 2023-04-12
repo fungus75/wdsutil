@@ -1,4 +1,5 @@
 import os.path
+import random
 
 import librosa as librosa
 
@@ -9,6 +10,7 @@ class DsContent:
 
     def __init__(self, mainConfig):
         self.mainConfig=mainConfig
+        self.content = []
 
     def item_generator(self,
                 relativeWaveFile=None,
@@ -90,3 +92,6 @@ class DsContent:
         if (idx>=self.size()):
             return None
         return self.content[idx]
+
+    def shuffle(self):
+        random.shuffle(self.content)

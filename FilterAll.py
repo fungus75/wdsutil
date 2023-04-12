@@ -17,5 +17,5 @@ class FilterAll(FilterBase):
 
     def perform(self, ds_content, filter_parameter=None, additional_filter_parameter=None):
         for i in range(0, ds_content.size()):
-            self._add_content_item(ds_content.get(i), True)  # default: add anything
+            self._add_newcontent_item(ds_content.get(i), True)  # default: add anything
         return self.new_content

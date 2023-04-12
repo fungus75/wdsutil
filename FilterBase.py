@@ -24,7 +24,7 @@ class FilterBase:
     def perform(self, ds_content, filter_parameter=None, additional_filter_parameter=None):
         """Returns info about the dataset"""
 
-    def _add_content_item(self, item, include):
+    def _add_newcontent_item(self, item, include):
         """Adds a content-line to the new content, if include is set to True, otherwise not
         and takes care of the not_filter_flag which turns around the include-parameter-behaviour"""
 

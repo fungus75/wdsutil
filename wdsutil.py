@@ -4,6 +4,7 @@ import sys
 from DsFabric import DsFabric
 from DatasetLJSpeech import DatasetLJSpeech
 from FilterAll import FilterAll
+from FilterTotalTime import FilterTotalTime
 from FltFabric import FltFabric
 from IfoFabric import IfoFabric
 from InfoAllSampleratesEqual import InfoAllSampleratesEqual
@@ -46,6 +47,7 @@ if __name__ == '__main__':
     # register filters
     filter_fab = FltFabric(mainConfig)
     filter_fab.register_filter(FilterAll(mainConfig))
+    filter_fab.register_filter(FilterTotalTime(mainConfig))
 
     content = None
 
@@ -79,6 +81,8 @@ if __name__ == '__main__':
                         help='Not when processing filter: filter out the exact opposite of the normal filter behaviour')
     parser.add_argument('-o', '--overwrite', action='store_true',
                         help='Overwrite if export-path already exist')
+    parser.add_argument('-r', '--random', action='store_true',
+                        help='Randomize (shuffle) the order of elements prior to export or filtering')
 
 
     args = parser.parse_args()
@@ -115,6 +119,10 @@ if __name__ == '__main__':
     if args.info:
         info_type = info_fab.get(args.info)
         print(info_type.get_info(content))
+
+    # randomizing (must be done prior to filtering
+    if args.random:
+        content.shuffle()
 
     # filter-processing
     if args.filter:
