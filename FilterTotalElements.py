@@ -7,7 +7,7 @@ from FilterBase import FilterBase
 
 class FilterTotalElements(FilterBase):
     def get_readable_name(self):
-        return "filtertotalelements"
+        return "totalelements"
 
     def print_filter_help(self):
         print("Filter:", self.get_readable_name())

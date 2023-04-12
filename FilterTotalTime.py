@@ -7,7 +7,7 @@ from FilterBase import FilterBase
 
 class FilterTotalTime(FilterBase):
     def get_readable_name(self):
-        return "filtertotaltime"
+        return "totaltime"
 
     def print_filter_help(self):
         print("Filter:", self.get_readable_name())
