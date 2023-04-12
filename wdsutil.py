@@ -4,6 +4,7 @@ import sys
 from DsFabric import DsFabric
 from DatasetLJSpeech import DatasetLJSpeech
 from FilterAll import FilterAll
+from FilterTotalElements import FilterTotalElements
 from FilterTotalTime import FilterTotalTime
 from FltFabric import FltFabric
 from IfoFabric import IfoFabric
@@ -48,6 +49,7 @@ if __name__ == '__main__':
     filter_fab = FltFabric(mainConfig)
     filter_fab.register_filter(FilterAll(mainConfig))
     filter_fab.register_filter(FilterTotalTime(mainConfig))
+    filter_fab.register_filter(FilterTotalElements(mainConfig))
 
     content = None
 
