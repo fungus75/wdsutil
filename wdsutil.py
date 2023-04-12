@@ -75,6 +75,8 @@ if __name__ == '__main__':
                         help='Input File, use -th for help')
     parser.add_argument('-n', '--not_filter_flag', action='store_true',
                         help='Not when processing filter: filter out the exact opposite of the normal filter behaviour')
+    parser.add_argument('-o', '--overwrite', action='store_true',
+                        help='Overwrite if export-path already exist')
 
 
     args = parser.parse_args()
@@ -96,6 +98,7 @@ if __name__ == '__main__':
     # some flags
     mainConfig['flexible'] = not args.strict
     mainConfig['not_filter_flag'] = args.not_filter_flag
+    mainConfig['overwrite'] = args.overwrite
 
     # check exclusive-or-flags
     if args.filter and args.info:

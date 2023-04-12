@@ -14,7 +14,6 @@ class FilterAll(FilterBase):
 
 
     def perform(self, ds_content):
-        if self.mainConfig["not_filter_flag"]:
-            ds_content =  DsContent(self.mainConfig)
-        else:
-            return ds_content
+        for i in range(0,ds_content.size()):
+            self._add_content_item(ds_content.get(i), True) #default: add anything
+        return self.new_content
