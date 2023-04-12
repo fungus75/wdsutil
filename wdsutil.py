@@ -4,6 +4,8 @@ import sys
 from DsFabric import DsFabric
 from DatasetLJSpeech import DatasetLJSpeech
 from FilterAll import FilterAll
+from FilterCharsPerSecondRange import FilterCharsPerSecondRange
+from FilterShorterThan import FilterShorterThan
 from FilterTotalElements import FilterTotalElements
 from FilterTotalTime import FilterTotalTime
 from FltFabric import FltFabric
@@ -23,9 +25,11 @@ from InfoTotalSec import InfoTotalSec
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
 
-    mainConfig:object = {
+    # define some initial-values
+    mainConfig: object = {
         'flexible': False
     }
+    content = None
 
     # register dataset-types
     ds_fab = DsFabric(mainConfig)
@@ -50,9 +54,10 @@ if __name__ == '__main__':
     filter_fab.register_filter(FilterAll(mainConfig))
     filter_fab.register_filter(FilterTotalTime(mainConfig))
     filter_fab.register_filter(FilterTotalElements(mainConfig))
+    filter_fab.register_filter(FilterShorterThan(mainConfig))
+    filter_fab.register_filter(FilterCharsPerSecondRange(mainConfig))
 
-    content = None
-
+    # Command-Line Parser
     parser = argparse.ArgumentParser(description='Wave DataSet Util')
     parser.add_argument('-it', '--input_type',
                         help='Input Type, possible values: '+ds_fab.get_types_as_list())
@@ -85,7 +90,6 @@ if __name__ == '__main__':
                         help='Overwrite if export-path already exist')
     parser.add_argument('-r', '--random', action='store_true',
                         help='Randomize (shuffle) the order of elements prior to export or filtering')
-
 
     args = parser.parse_args()
 
