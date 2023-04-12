@@ -23,15 +23,14 @@ class FilterCharsPerSecondRange(FilterBase):
         if additional_filter_parameter is None:
             raise Exception("You must provide a maximum chars_per_seconds border")
 
-
         min_cps = float(filter_parameter)
         max_cps = float(additional_filter_parameter)
 
-        if min_cps>max_cps:
+        if min_cps > max_cps:
             raise Exception("Minimum chars_per_seconds border must not be higher than maximum chars_per_seconds border")
 
         for i in range(0, ds_content.size()):
             item = ds_content.get(i)
-            include = item["chars_per_sec"] >= min_cps and item["chars_per_sec"]<= max_cps
+            include = min_cps <= item["chars_per_sec"] <= max_cps
             self._add_newcontent_item(item, include)
         return self.new_content
