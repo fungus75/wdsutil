@@ -21,7 +21,7 @@ class FilterBase:
         """Prints out some information about the type"""
 
     @abc.abstractmethod
-    def perform(self, ds_content):
+    def perform(self, ds_content, filter_parameter=None, additional_filter_parameter=None):
         """Returns info about the dataset"""
 
     def _add_content_item(self, item, include):

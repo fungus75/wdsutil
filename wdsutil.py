@@ -69,6 +69,8 @@ if __name__ == '__main__':
                         help='Get more information about the various filters that could be used by copying the dataset')
     parser.add_argument('-fp', '--filter_parameter',
                         help='Optional parameter required for some filters, use -fh for help')
+    parser.add_argument('-fp2', '--filter_parameter2',
+                        help='Another optional parameter required for some filters, use -fh for help')
     parser.add_argument('-ot', '--output_type',
                         help='Input Type, possible values: '+ds_fab.get_types_as_list())
     parser.add_argument('-of', '--output_file',
@@ -120,6 +122,6 @@ if __name__ == '__main__':
             sys.exit("Error: you must supply -ot when using -f")
         output_type = ds_fab.get(args.output_type)
         filter_type = filter_fab.get(args.filter)
-        filter_content = filter_type.perform(content)
+        filter_content = filter_type.perform(content, args.filter_parameter, args.filter_parameter2)
         output_type.setContent(filter_content)
         output_type.export_dataset(args.output_file)
