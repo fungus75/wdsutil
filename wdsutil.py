@@ -16,6 +16,12 @@ from InfoCharPerSec25Percent import InfoCharPerSec25Percent
 from InfoCharPerSec50Percent import InfoCharPerSec50Percent
 from InfoCharPerSec75Percent import InfoCharPerSec75Percent
 from InfoCount import InfoCount
+from InfoLenSec25Percent import InfoLenSec25Percent
+from InfoLenSec50Percent import InfoLenSec50Percent
+from InfoLenSec75Percent import InfoLenSec75Percent
+from InfoLenSecAvg import InfoLenSecAvg
+from InfoLenSecMax import InfoLenSecMax
+from InfoLenSecMin import InfoLenSecMin
 from InfoMaxCharPerSec import InfoMaxCharPerSec
 from InfoMinCharPerSec import InfoMinCharPerSec
 from InfoSamplerate import InfoSamplerate
@@ -48,6 +54,14 @@ if __name__ == '__main__':
     info_fab.register_info(InfoCharPerSec50Percent(mainConfig))
     info_fab.register_info(InfoCharPerSec75Percent(mainConfig))
     info_fab.register_info(InfoStats(mainConfig))
+    info_fab.register_info(InfoLenSecMin(mainConfig))
+    info_fab.register_info(InfoLenSecMax(mainConfig))
+    info_fab.register_info(InfoLenSec25Percent(mainConfig))
+    info_fab.register_info(InfoLenSec50Percent(mainConfig))
+    info_fab.register_info(InfoLenSecAvg(mainConfig))
+    info_fab.register_info(InfoLenSec75Percent(mainConfig))
+
+
 
     # register filters
     filter_fab = FltFabric(mainConfig)
