@@ -5,6 +5,7 @@ from DsFabric import DsFabric
 from DatasetLJSpeech import DatasetLJSpeech
 from FilterAll import FilterAll
 from FilterCharsPerSecondRange import FilterCharsPerSecondRange
+from FilterDurationSecRange import FilterDurationSecRange
 from FilterShorterThan import FilterShorterThan
 from FilterTotalElements import FilterTotalElements
 from FilterTotalTime import FilterTotalTime
@@ -70,6 +71,8 @@ if __name__ == '__main__':
     filter_fab.register_filter(FilterTotalElements(mainConfig))
     filter_fab.register_filter(FilterShorterThan(mainConfig))
     filter_fab.register_filter(FilterCharsPerSecondRange(mainConfig))
+    filter_fab.register_filter(FilterDurationSecRange(mainConfig))
+
 
     # Command-Line Parser
     parser = argparse.ArgumentParser(description='Wave DataSet Util')
