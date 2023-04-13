@@ -55,9 +55,12 @@ class DatasetLJSpeech(DatasetBase):
         metafile = open(path, 'r')
         for line in metafile:
             parts = line.split('|')
+            lowerText=None
+            if len(parts)>2:
+                lowerText=parts[2]
             self._add_content_line(relativeWaveFileNoExtension=parts[0],
                                    basisPathWaveFile=basisPathWaveFile,
                                    text=parts[1],
-                                   lowerText=parts[2])
+                                   lowerText=lowerText)
         metafile.close()
         return self._getContent()
