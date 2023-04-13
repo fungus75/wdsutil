@@ -6,6 +6,7 @@ from InfoCharPerSec75Percent import InfoCharPerSec75Percent
 from InfoCount import InfoCount
 from InfoMaxCharPerSec import InfoMaxCharPerSec
 from InfoMinCharPerSec import InfoMinCharPerSec
+from InfoSamplerate import InfoSamplerate
 from InfoTotalSec import InfoTotalSec
 
 
@@ -19,6 +20,7 @@ class InfoStats(InfoBase):
 
     def get_info(self, ds_content):
         stat_class_list = [InfoCount(self.mainConfig),
+                           InfoSamplerate(self.mainConfig),
                            InfoMinCharPerSec(self.mainConfig),
                            InfoCharPerSec25Percent(self.mainConfig),
                            InfoCharPerSec50Percent(self.mainConfig),
