@@ -25,7 +25,7 @@ class DatasetLJSpeech(DatasetBase):
         if not os.path.isdir(basisPathWaveFile):
             sys.exit("Error: This is not a directory: "+basisPathWaveFile)
 
-        metafile = open(path, 'w')
+        metafile = open(path, 'w', encoding="utf-8")
         for i in range(0, self.content.size()):
             item = self.content.get(i)
             shutil.copyfile(item['fullPathWaveFile'],
@@ -52,7 +52,7 @@ class DatasetLJSpeech(DatasetBase):
             sys.exit("Error: You must provide a valid path for dataset.")
 
         basisPathWaveFile = self._eval_wave_path(path)
-        metafile = open(path, 'r')
+        metafile = open(path, 'r', encoding="utf-8")
         for line in metafile:
             parts = line.split('|')
             lowerText=None

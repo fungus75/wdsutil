@@ -17,6 +17,7 @@ from InfoCharPerSec25Percent import InfoCharPerSec25Percent
 from InfoCharPerSec50Percent import InfoCharPerSec50Percent
 from InfoCharPerSec75Percent import InfoCharPerSec75Percent
 from InfoCount import InfoCount
+from InfoDumpCorpus import InfoDumpCorpus
 from InfoLenSec25Percent import InfoLenSec25Percent
 from InfoLenSec50Percent import InfoLenSec50Percent
 from InfoLenSec75Percent import InfoLenSec75Percent
@@ -61,6 +62,7 @@ if __name__ == '__main__':
     info_fab.register_info(InfoLenSec50Percent(mainConfig))
     info_fab.register_info(InfoLenSecAvg(mainConfig))
     info_fab.register_info(InfoLenSec75Percent(mainConfig))
+    info_fab.register_info(InfoDumpCorpus(mainConfig))
 
 
 
