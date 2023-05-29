@@ -11,5 +11,5 @@ class InfoDumpCorpus(InfoBase):
 
     def get_info(self, ds_content):
         for i in range(0, ds_content.size()):
-            print(ds_content.get(i)["text"])
+            print(ds_content.get(i)["text"].strip())
         return ""
