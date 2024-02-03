@@ -57,8 +57,10 @@ class DatasetFilePairs(DatasetBase):
                 continue
             basisfilename = filename[0:-4]
             if not os.path.exists(os.path.join(basisPathWaveFile, basisfilename+".wav")):
-                print(" > Warning: wav-file missing for "+filename+", ignoring")
-                continue
+                print(" > Warning: wav-file missing for "+filename)
+                if self.mainConfig['flexible']:
+                    continue
+                raise FileNotFoundError(basisfilename+".wav")
 
             metafile = open(os.path.join(basisPathWaveFile, filename), 'r', encoding="utf-8")
             text = " ".join(metafile.readlines()).strip()
