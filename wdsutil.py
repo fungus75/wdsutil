@@ -6,6 +6,7 @@ from DsFabric import DsFabric
 from DatasetLJSpeech import DatasetLJSpeech
 from FilterAll import FilterAll
 from FilterCharsPerSecondRange import FilterCharsPerSecondRange
+from FilterDuplicateText import FilterDuplicateText
 from FilterDurationSecRange import FilterDurationSecRange
 from FilterShorterThan import FilterShorterThan
 from FilterTotalElements import FilterTotalElements
@@ -76,6 +77,7 @@ if __name__ == '__main__':
     filter_fab.register_filter(FilterShorterThan(mainConfig))
     filter_fab.register_filter(FilterCharsPerSecondRange(mainConfig))
     filter_fab.register_filter(FilterDurationSecRange(mainConfig))
+    filter_fab.register_filter(FilterDuplicateText(mainConfig))
 
 
     # Command-Line Parser
