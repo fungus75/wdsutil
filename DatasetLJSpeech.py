@@ -32,7 +32,7 @@ class DatasetLJSpeech(DatasetBase):
                             os.path.join(basisPathWaveFile, item['relativeWaveFile']))
             metafile.write(item['relativeWaveFileNoExtension'] + '|' +
                            item['text'] + '|' +
-                           item['lowerText'])
+                           item['lowerText'] + '\n')
         metafile.close()
 
     def get_readable_name(self):
@@ -54,6 +54,7 @@ class DatasetLJSpeech(DatasetBase):
         basisPathWaveFile = self._eval_wave_path(path)
         metafile = open(path, 'r', encoding="utf-8")
         for line in metafile:
+            line = line.strip()
             parts = line.split('|')
             lowerText=None
             if len(parts)>2:
