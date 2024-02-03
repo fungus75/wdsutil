@@ -1,6 +1,7 @@
 import argparse
 import sys
 
+from DatasetFilePairs import DatasetFilePairs
 from DsFabric import DsFabric
 from DatasetLJSpeech import DatasetLJSpeech
 from FilterAll import FilterAll
@@ -42,6 +43,7 @@ if __name__ == '__main__':
     # register dataset-types
     ds_fab = DsFabric(mainConfig)
     ds_fab.register_datatype(DatasetLJSpeech(mainConfig))
+    ds_fab.register_datatype(DatasetFilePairs(mainConfig))
 
     # register info-types
     info_fab = IfoFabric(mainConfig)
