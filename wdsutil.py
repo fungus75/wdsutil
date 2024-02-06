@@ -8,6 +8,7 @@ from FilterAll import FilterAll
 from FilterCharsPerSecondRange import FilterCharsPerSecondRange
 from FilterDuplicateText import FilterDuplicateText
 from FilterDurationSecRange import FilterDurationSecRange
+from FilterLessCharsThan import FilterLessCharsThan
 from FilterShorterThan import FilterShorterThan
 from FilterTotalElements import FilterTotalElements
 from FilterTotalTime import FilterTotalTime
@@ -78,6 +79,7 @@ if __name__ == '__main__':
     filter_fab.register_filter(FilterCharsPerSecondRange(mainConfig))
     filter_fab.register_filter(FilterDurationSecRange(mainConfig))
     filter_fab.register_filter(FilterDuplicateText(mainConfig))
+    filter_fab.register_filter(FilterLessCharsThan(mainConfig))
 
 
     # Command-Line Parser
