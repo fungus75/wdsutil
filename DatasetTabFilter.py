@@ -68,7 +68,7 @@ class DatasetTabFilter(DatasetBase):
                 text = self.get_corresponding_field(lineelements, "text")
                 region = self.get_corresponding_field(lineelements, "region")
                 age = self.get_corresponding_field(lineelements, "age")
-                gender = self.get_corresponding_field(lineelements, "gender")
+                gender = self.get_corresponding_field(lineelements, "sex")
 
                 age = self.try_conversion(age, "age")
                 gender = self.try_conversion(gender, "sex")
