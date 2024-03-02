@@ -136,11 +136,16 @@ class DatasetTabFilter(DatasetBase):
         if self.filterconfig["audioformat"] == "wav":
             return filename
 
+        if not os.path.exists(filename):
+            # current filename does not exist, do nothing, just return current filename
+            return filename
+
         # convert fileformat
         lastdot = filename.rfind(".")
         newfilename=filename[:lastdot] + ".wav"
         if os.path.exists(newfilename):
             return newfilename
+
 
         command = self.filterconfig["wave_convert_command"].format(
             origfilename=filename,
