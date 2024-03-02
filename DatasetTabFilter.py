@@ -34,10 +34,12 @@ class DatasetTabFilter(DatasetBase):
             file.close()
 
         self.validate_config(["tabfile", "hasHeader", "encoding", "fields", "audioformat", "basepathwave",
-                              "adjustaudiofilename", "wave_convert_command"])
+                              "adjustaudiofilename", "wave_convert_command", "includeprotocol"])
 
         if not os.path.exists(self.filterconfig["tabfile"]):
             sys.exit("Error: tabfile "+self.filterconfig["tabfile"]+ " not found")
+
+        includeprotocol = open(self.filterconfig["includeprotocol"], "w", encoding=self.filterconfig["encoding"])
 
 
         with open(self.filterconfig["tabfile"], "r", encoding=self.filterconfig["encoding"]) as tabfile:
@@ -50,12 +52,19 @@ class DatasetTabFilter(DatasetBase):
                     sys.exit("Error: Missing Parameter in filter-config: header")
                 self.tabfile_headers = self.filterconfig["header"]
 
+            # write header to includeprotocol
+            includeprotocol.write("\t".join(self.tabfile_headers))
+            includeprotocol.write("\n")
+
             # read datalines
             for line in tabfile:
                 lineelements=line.strip().split("\t")
 
                 if not self.filtermatched(lineelements):
                     continue
+
+                includeprotocol.write("\t".join(lineelements))
+                includeprotocol.write("\n")
 
                 filename = self.eval_filename(self.get_corresponding_field(lineelements, "audiofile"))
                 filename = self.convert_wave_format(filename)
@@ -80,6 +89,7 @@ class DatasetTabFilter(DatasetBase):
                                        gender=gender)
 
             tabfile.close()
+        includeprotocol.close()
         return self._getContent()
 
     def get_corresponding_field(self, elements, field):
