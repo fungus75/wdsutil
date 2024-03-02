@@ -40,11 +40,14 @@ class DatasetBase:
                           basisPathWaveFile=None,
                           text=None,
                           lowerText=None,
-                          upperText=None
+                          upperText=None,
+                          region=None,
+                          age=None,
+                          gender=None
                           ):
         item = self.content.item_generator(relativeWaveFile,relativeWaveFileNoExtension,
                                            fullPathWaveFile,basisPathWaveFile,
-                                           text,lowerText,upperText)
+                                           text,lowerText,upperText,region,age,gender)
 
         # validate filename
         if not os.path.exists(item['fullPathWaveFile']) and not self.mainConfig['flexible']:

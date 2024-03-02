@@ -19,7 +19,10 @@ class DsContent:
                 basisPathWaveFile=None,
                 text=None,
                 lowerText=None,
-                upperText=None
+                upperText=None,
+                region=None,
+                age=None,
+                gender=None
                 ):
         # basic verification
         if relativeWaveFile is None and relativeWaveFileNoExtension is None and fullPathWaveFile is None:
@@ -52,6 +55,24 @@ class DsContent:
         if upperText is None:
             upperText = text.upper()
 
+        # validate gender if present
+        if gender is not None:
+            if gender != 'm' and gender != 'f' and gender != 'd':
+                if self.mainConfig['flexible']:
+                    print ("Gender "+gender+" not in allowed range")
+                    gender = None
+                else:
+                    raise Exception("Gender "+gender+" not in allowed range")
+
+        # validate age if present
+        if age is not None:
+            if age != '<20' and age != '20+' and age != '30+' and age != '40+' and age != '50+' and age != '60+':
+                if self.mainConfig['flexible']:
+                    print("Age " + age + " not in allowed range")
+                    age = None
+                else:
+                    raise Exception("Age " + age + " not in allowed range")
+
         return {
             'relativeWaveFile': relativeWaveFile,
             'relativeWaveFileNoExtension': relativeWaveFileNoExtension,
@@ -59,7 +80,10 @@ class DsContent:
             'basisPathWaveFile': basisPathWaveFile,
             'text': text,
             'lowerText': lowerText,
-            'upperText': upperText
+            'upperText': upperText,
+            'region': region,
+            'age': age,
+            'gender': gender
         }
 
     def add_item(self, item):
