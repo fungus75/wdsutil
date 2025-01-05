@@ -53,12 +53,24 @@ class DatasetLJSpeech(DatasetBase):
 
         basisPathWaveFile = self._eval_wave_path(path)
         metafile = open(path, 'r', encoding="utf-8")
+        unique_filename=[]
         for line in metafile:
             line = line.strip()
             parts = line.split('|')
             lowerText=None
             if len(parts)>2:
                 lowerText=parts[2]
+
+            filename = parts[0]
+            if filename in unique_filename:
+                if self.mainConfig['flexible']:
+                    continue
+
+                print("Filename ", filename, " is a duplicate within ", path)
+                print("Use 'flexible' to ignore this error")
+                sys.exit("Error: duplicate filename")
+
+            unique_filename.append(filename)
             self._add_content_line(relativeWaveFileNoExtension=parts[0],
                                    basisPathWaveFile=basisPathWaveFile,
                                    text=parts[1],
